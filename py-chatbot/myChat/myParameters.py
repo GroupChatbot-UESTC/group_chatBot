@@ -8,8 +8,8 @@ MOVIE_CONVERSATIONS_FIELDS = ["character1ID", "character2ID", "movieID", "uttera
 
 model_name = 'cb_model'
 attn_model = 'dot'
-#attn_model = 'general'
-#attn_model = 'concat'
+# attn_model = 'general'
+# attn_model = 'concat'
 hidden_size = 500
 encoder_n_layers = 2
 decoder_n_layers = 2
@@ -26,6 +26,6 @@ n_iteration = 4000
 print_every = 1
 save_every = 500
 
-#PATH="cb_model/cornell movie-dialogs corpus/2-2_500/4000_checkpoint.tar"
+# PATH="cb_model/cornell movie-dialogs corpus/2-2_500/4000_checkpoint.tar"
 
-PATH="./myChat/cb_model/cornell movie-dialogs corpus/2-2_500/60000_checkpoint.tar"
+PATH = "./myChat/cb_model/cornell movie-dialogs corpus/2-2_500/60000_checkpoint.tar"

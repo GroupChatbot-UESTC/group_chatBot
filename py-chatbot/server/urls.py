@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls import url
-from . import views,serch
- 
+from . import views, serch
+
 urlpatterns = [
     path('runoob/', views.runoob),
     path('hello/', views.hello),

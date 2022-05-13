@@ -13,11 +13,13 @@ EOS_token = 2  # 句子的结束
 MAX_LENGTH = 10  # 句子最大长度是10个词(包括EOS等特殊词)
 MIN_COUNT = 3
 
+
 def printLines(file, n=10):
     with open(file, 'rb') as datafile:
         lines = datafile.readlines()
     for line in lines[:n]:
         print(line)
+
 
 def loadLines(fileName, fields):
     lines = {}
@@ -30,6 +32,7 @@ def loadLines(fileName, fields):
                 lineObj[field] = values[i]
             lines[lineObj['lineID']] = lineObj
     return lines
+
 
 def loadConversations(fileName, lines, fields):
     conversations = []
@@ -50,17 +53,19 @@ def loadConversations(fileName, lines, fields):
             conversations.append(convObj)
     return conversations
 
+
 def extractSentencePairs(conversations):
     qa_pairs = []
     for conversation in conversations:
         # 遍历对话中的每一个句子，忽略最后一个句子，因为没有答案。
         for i in range(len(conversation["lines"]) - 1):
             inputLine = conversation["lines"][i]["text"].strip()
-            targetLine = conversation["lines"][i+1]["text"].strip()
+            targetLine = conversation["lines"][i + 1]["text"].strip()
             # 如果有空的句子就去掉
             if inputLine and targetLine:
                 qa_pairs.append([inputLine, targetLine])
     return qa_pairs
+
 
 def unicodeToAscii(s):
     return ''.join(
@@ -143,10 +148,11 @@ def trimRareWords(voc, pairs, MIN_COUNT):
                                                                 len(keep_pairs), len(keep_pairs) / len(pairs)))
     return keep_pairs
 
+
 def dataProcessing():
     corpus_name = mp.corpus_name
     corpus = os.path.join("myChat\data", corpus_name)
     datafile = os.path.join(corpus, "formatted_movie_lines.txt")
     voc, pairs = loadPrepareData(corpus, corpus_name, datafile)
     pairs = trimRareWords(voc, pairs, MIN_COUNT)
-    return voc,pairs
+    return voc, pairs

@@ -1,13 +1,13 @@
 class Voc:
     def __init__(self, name):
-        self. PAD_token = 0  # 表示padding
+        self.PAD_token = 0  # 表示padding
         self.SOS_token = 1  # 句子的开始
         self.EOS_token = 2  # 句子的结束
         self.name = name
         self.trimmed = False
-        self.word2index = {} # 词映射到位置
-        self.word2count = {} # 词频
-        self.index2word = {self.PAD_token: "PAD", self.SOS_token: "SOS", self.EOS_token: "EOS"} # 位置映射到词
+        self.word2index = {}  # 词映射到位置
+        self.word2count = {}  # 词频
+        self.index2word = {self.PAD_token: "PAD", self.SOS_token: "SOS", self.EOS_token: "EOS"}  # 位置映射到词
         self.num_words = 3  # 初始化时便有SOS, EOS, PAD这3个token。
 
     def addSentence(self, sentence):
